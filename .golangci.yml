@@ -1,0 +1,75 @@
+version: "2"
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+
+linters:
+  default: none
+  enable:
+    - bodyclose
+    - copyloopvar
+    - dogsled
+    - dupl
+    - errcheck
+    - errorlint
+    - exhaustive
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - goprintffuncname
+    - gosec
+    - govet
+    - ineffassign
+    - misspell
+    - nakedret
+    - nilerr
+    - noctx
+    - nolintlint
+    - prealloc
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
+  settings:
+    dupl:
+      threshold: 100
+    gocognit:
+      min-complexity: 20
+    gocyclo:
+      min-complexity: 15
+    goconst:
+      min-len: 2
+      min-occurrences: 2
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - performance
+        - style
+      disabled-checks:
+        - hugeParam
+        - unnamedResult
+    gosec:
+      excludes:
+        - G404
+    misspell:
+      locale: US
+    nakedret:
+      max-func-lines: 30
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters:
+          - dupl
+          - gosec
+          - gocognit
+      - path: testhelpers/
+        linters:
+          - gocyclo
